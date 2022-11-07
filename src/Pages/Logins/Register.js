@@ -1,15 +1,29 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
+import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 
 const Register = () => {
+  const { createUser } = useContext(AuthContext);
+
   const { register, handleSubmit } = useForm();
 
   const onSubmit = value => {
     const { name, photoURL, email, password, confirm } = value;
+
     if (password !== confirm) {
       return toast.error(`Password didn't matched.`);
     }
+
+    createUser(email, password)
+      .then(result => {
+        const user = result.user;
+        console.log(user);
+      })
+      .catch(err => {
+        console.error('error: ', err);
+        toast.error(err.message);
+      })
   };
 
   return (
