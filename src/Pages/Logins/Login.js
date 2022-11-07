@@ -21,7 +21,19 @@ const Login = () => {
       .then(result => {
         const user = result.user;
         toast.success(`${user.displayName} you are now logged in!!`);
-        navigate(from, { replace: true });
+
+        fetch(`http://localhost:5000/jwt?email=${user.email}`, {
+
+        })
+          .then(res => res.json())
+          .then(data => {
+            localStorage.setItem('legal-token', data.token);
+          })
+          .catch(err => {
+            console.log('error: ', err);
+          })
+
+        // navigate(from, { replace: true });
       })
       .catch(err => {
         console.error('error: ', err);
