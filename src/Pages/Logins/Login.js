@@ -22,9 +22,7 @@ const Login = () => {
         const user = result.user;
         toast.success(`${user.displayName} you are now logged in!!`);
 
-        fetch(`http://localhost:5000/jwt?email=${user.email}`, {
-
-        })
+        fetch(`http://localhost:5000/jwt?email=${user.email}`)
           .then(res => res.json())
           .then(data => {
             localStorage.setItem('legal-token', data.token);
