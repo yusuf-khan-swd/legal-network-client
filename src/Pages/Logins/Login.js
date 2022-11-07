@@ -1,10 +1,11 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 
 const Login = () => {
   const { logIn } = useContext(AuthContext);
+  const [showPassword, setShowPassword] = useState(false);
 
   const { register, handleSubmit } = useForm();
 
@@ -22,12 +23,18 @@ const Login = () => {
       })
   };
 
+  const handleShowPassword = event => {
+    const isChecked = (event.target.checked);
+    setShowPassword(isChecked);
+  };
+
   return (
     <div>
       <h2>Login</h2>
       <form onSubmit={handleSubmit(onSubmit)}>
         <input {...register('email')} type="email" placeholder='Email' />
-        <input {...register('password')} type="password" placeholder='Password' />
+        <input {...register('password')} type={`${showPassword ? 'text' : 'password'}`} placeholder='Password' />
+        <input type="checkbox" onClick={handleShowPassword} id='showPass' /> <label htmlFor='showPass'>Show Password</label>
         <input type="submit" />
       </form>
     </div>

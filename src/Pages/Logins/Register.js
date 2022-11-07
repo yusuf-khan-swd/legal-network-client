@@ -1,10 +1,11 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 
 const Register = () => {
   const { createUser, addUserProfile } = useContext(AuthContext);
+  const [showPassword, setShowPassword] = useState(false);
 
   const { register, handleSubmit } = useForm();
 
@@ -20,7 +21,7 @@ const Register = () => {
         const user = result.user;
         console.log(user);
         handleAddUserProfile(name, photoURL);
-        toast.success('Register is successful!!!');
+        toast.success('Registration is successful!!!');
       })
       .catch(err => {
         console.error('error: ', err);
@@ -42,6 +43,11 @@ const Register = () => {
       })
   };
 
+  const handleShowPassword = event => {
+    const isChecked = (event.target.checked);
+    setShowPassword(isChecked);
+  };
+
   return (
     <div>
       <h2>Register</h2>
@@ -49,8 +55,9 @@ const Register = () => {
         <input {...register('name')} type="text" placeholder='Full Name' />
         <input {...register('photoURL')} type="text" placeholder='Photo URL' />
         <input {...register('email')} type="email" placeholder='Email' />
-        <input {...register('password')} type="password" placeholder='Password' />
-        <input {...register('confirm')} type="password" placeholder='Confirm Password' />
+        <input {...register('password')} type={`${showPassword ? 'text' : 'password'}`} placeholder='Password' />
+        <input {...register('confirm')} type={`${showPassword ? 'text' : 'password'}`} placeholder='Confirm Password' />
+        <input type="checkbox" onClick={handleShowPassword} id='showPass' /> <label htmlFor='showPass'>Show Password</label>
         <input type="submit" />
       </form>
     </div>
