@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 
 const Register = () => {
@@ -19,9 +20,18 @@ const Register = () => {
     createUser(email, password)
       .then(result => {
         const user = result.user;
-        console.log(user);
         handleAddUserProfile(name, photoURL);
         toast.success('Registration is successful!!!');
+
+        fetch(`http://localhost:5000/jwt?email=${user.email}`)
+          .then(res => res.json())
+          .then(data => {
+            localStorage.setItem('legal-token', data.token);
+          })
+          .catch(err => {
+            console.log('error: ', err);
+          })
+
       })
       .catch(err => {
         console.error('error: ', err);
@@ -60,6 +70,7 @@ const Register = () => {
         <input type="checkbox" onClick={handleShowPassword} id='showPass' /> <label htmlFor='showPass'>Show Password</label>
         <input type="submit" />
       </form>
+      <Link to='/login'>Login</Link>
     </div>
   );
 };
