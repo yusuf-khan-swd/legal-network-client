@@ -28,12 +28,12 @@ const Login = () => {
           .then(res => res.json())
           .then(data => {
             localStorage.setItem('legal-token', data.token);
+            navigate(from, { replace: true });
           })
           .catch(err => {
             console.log('error: ', err);
           })
 
-        // navigate(from, { replace: true });
       })
       .catch(err => {
         console.error('error: ', err);
