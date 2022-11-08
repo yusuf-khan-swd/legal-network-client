@@ -9,7 +9,7 @@ const ServiceCard = ({ service }) => {
         <h2 className="card-title">{name}</h2>
         <p>{description}</p>
         <div className="card-actions justify-end">
-          <button className="btn btn-primary">Buy Now</button>
+          <button className="btn bg-orange-100 text-black border border-orange-500 hover:bg-orange-200 hover:border-orange-400">view details</button>
         </div>
       </div>
     </div>

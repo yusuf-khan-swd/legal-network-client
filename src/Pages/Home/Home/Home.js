@@ -1,5 +1,5 @@
 import React from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 import ServiceCard from '../../Shared/ServiceCard/ServiceCard';
 
 const Home = () => {
@@ -12,6 +12,9 @@ const Home = () => {
         {
           popularServices.map(service => <ServiceCard key={service._id} service={service}></ServiceCard>)
         }
+      </div>
+      <div className='text-center mt-5'>
+        <Link to='/services' className='btn bg-white text-gray-600 outline outline-orange-400 border-none hover:bg-orange-300 hover:border-none px-6'>See More</Link>
       </div>
     </div>
   );
