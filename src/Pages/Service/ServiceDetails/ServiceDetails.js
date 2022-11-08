@@ -10,7 +10,7 @@ const ServiceDetails = () => {
   const { photoURL, name, description, _id } = useLoaderData();
   const [reviews, setReviews] = useState([]);
 
-  const { register, handleSubmit, formState: { errors } } = useForm();
+  const { register, handleSubmit, reset, formState: { errors } } = useForm();
 
   const onSubmit = value => {
     value.name = user.displayName;
@@ -31,6 +31,7 @@ const ServiceDetails = () => {
           toast.success(`Thank you ${user.displayName} for your review.`);
           const newReviews = [...reviews, value];
           setReviews(newReviews);
+          reset();
         }
       })
   };

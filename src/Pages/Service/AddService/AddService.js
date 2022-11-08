@@ -48,6 +48,17 @@ const AddService = () => {
             </div>
             <div className="form-control">
               <label className="label">
+                <span className="label-text">Service Price</span>
+              </label>
+              <input type="text" {...register('price', { required: true })} placeholder="Service Price" className="input input-bordered" required />
+              {errors.price &&
+                <label className="label">
+                  <span className="label-text text-red-500">Service Price Is Required</span>
+                </label>
+              }
+            </div>
+            <div className="form-control">
+              <label className="label">
                 <span className="label-text">Photo URL</span>
               </label>
               <input type="text" {...register('photoURL', { required: true })} placeholder="Photo URL" className="input input-bordered" required />
