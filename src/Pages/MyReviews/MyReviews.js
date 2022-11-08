@@ -1,10 +1,11 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 import useTitle from '../../hooks/useTitle';
 
 const MyReviews = () => {
   const { logOut, user } = useContext(AuthContext);
-  useTitle('Reviews')
+  const [reviews, setReviews] = useState([]);
+  useTitle('My Reviews');
 
   useEffect(() => {
     fetch(`http://localhost:5000/my-reviews?email=${user?.email}`, {
@@ -19,12 +20,12 @@ const MyReviews = () => {
         return res.json();
       })
       .then(data => {
-        console.log(data);
+        setReviews(data);
       })
   }, [user?.email, logOut]);
   return (
     <div>
-      <h2>Reviews</h2>
+      <h2>Reviews {reviews.length} </h2>
     </div>
   );
 };
