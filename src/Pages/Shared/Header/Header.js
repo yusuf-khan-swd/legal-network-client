@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
+import { FaUser } from 'react-icons/fa';
 
 const Header = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -65,13 +66,15 @@ const Header = () => {
                       <Link to='/reviews'>My Reviews</Link>
                     </li>
                     <li>
-                      <Link>Add Service</Link>
+                      <Link to='/add-service'>Add Service</Link>
                     </li>
                     <li><button onClick={handleLogOut}>Logout</button></li>
                   </>
                   :
                   <>
-                    <Link to='/login'>Login</Link>
+                    <li>
+                      <Link to='/login'>Login</Link>
+                    </li>
                   </>
               }
               <li className='border-2 border-orange-400 rounded-lg'>
@@ -83,7 +86,14 @@ const Header = () => {
 
             <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
               <div className="w-10 rounded-full">
-                <img src={user?.photoURL} alt={user?.displayName} />
+                {
+                  user?.photoURL ?
+                    <img src={user?.photoURL} alt={user?.displayName} />
+                    :
+                    <button>
+                      <FaUser className='text-2xl'></FaUser>
+                    </button>
+                }
               </div>
             </label>
 
