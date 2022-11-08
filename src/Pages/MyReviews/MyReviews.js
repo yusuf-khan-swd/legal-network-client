@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 import useTitle from '../../hooks/useTitle';
-import ReviewCard from '../Service/ServiceDetails/ReviewCard';
+import MyReviewsCard from './MyReviewsCard';
 
 const MyReviews = () => {
   const { logOut, user } = useContext(AuthContext);
@@ -27,9 +27,26 @@ const MyReviews = () => {
   return (
     <div>
       <h2>Reviews {reviews.length} </h2>
-      {
-        reviews.map(review => <ReviewCard key={review._id} review={review}></ReviewCard>)
-      }
+      <div className="overflow-x-auto w-full">
+        <table className="table w-full">
+          <thead>
+            <tr>
+              <th>
+              </th>
+              <th>Name</th>
+              <th>Job</th>
+              <th>Favorite Color</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              reviews.map(review => <MyReviewsCard key={review._id} review={review}></MyReviewsCard>)
+            }
+
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };
