@@ -57,7 +57,7 @@ const Login = () => {
                 <label className="label">
                   <span className="label-text">Email</span>
                 </label>
-                <input type="email" {...register('email', { required: true })} placeholder="email" className="input input-bordered" />
+                <input type="email" {...register('email', { required: true })} placeholder="email" className="input input-bordered" required />
                 {errors.email &&
                   <label className="label">
                     <span className="label-text text-red-500">Email Is Required</span>
@@ -77,7 +77,7 @@ const Login = () => {
               </div>
               <div className="form-control">
                 <label className="cursor-pointer label justify-start">
-                  <input onClick={handleShowPassword} type="checkbox" className="checkbox checkbox-warning mr-2" required />
+                  <input onClick={handleShowPassword} type="checkbox" className="checkbox checkbox-warning mr-2" />
                   <span className="label-text">Show Password</span>
                 </label>
               </div>

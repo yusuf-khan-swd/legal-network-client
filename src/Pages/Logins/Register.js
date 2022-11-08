@@ -72,7 +72,7 @@ const Register = () => {
                 <label className="label">
                   <span className="label-text">Full Name</span>
                 </label>
-                <input type="text" {...register('name', { required: true })} placeholder="Full Name" className="input input-bordered" />
+                <input type="text" {...register('name', { required: true })} placeholder="Full Name" className="input input-bordered" required />
                 {errors.name &&
                   <label className="label">
                     <span className="label-text text-red-500">Full Name Is Required</span>
@@ -83,7 +83,7 @@ const Register = () => {
                 <label className="label">
                   <span className="label-text">Photo URL</span>
                 </label>
-                <input type="text" {...register('photoURL', { required: true })} placeholder="Photo URL" className="input input-bordered" />
+                <input type="text" {...register('photoURL', { required: true })} placeholder="Photo URL" className="input input-bordered" required />
                 {errors.photoURL &&
                   <label className="label">
                     <span className="label-text text-red-500">Photo URL Is Required</span>
@@ -94,7 +94,7 @@ const Register = () => {
                 <label className="label">
                   <span className="label-text">Email</span>
                 </label>
-                <input type="email" {...register('email', { required: true })} placeholder="email" className="input input-bordered" />
+                <input type="email" {...register('email', { required: true })} placeholder="email" className="input input-bordered" required />
                 {errors.email &&
                   <label className="label">
                     <span className="label-text text-red-500">Email Is Required</span>
@@ -105,7 +105,7 @@ const Register = () => {
                 <label className="label">
                   <span className="label-text">Password</span>
                 </label>
-                <input type={showPassword ? 'text' : 'password'} placeholder="password" {...register('password', { required: true })} className="input input-bordered" />
+                <input type={showPassword ? 'text' : 'password'} placeholder="password" {...register('password', { required: true })} className="input input-bordered" required />
                 {errors.password &&
                   <label className="label">
                     <span className="label-text text-red-500">Password Is Required</span>
@@ -116,7 +116,7 @@ const Register = () => {
                 <label className="label">
                   <span className="label-text">Confirm Password</span>
                 </label>
-                <input type={showPassword ? 'text' : 'password'} placeholder="password" {...register('confirm', { required: true })} className="input input-bordered" />
+                <input type={showPassword ? 'text' : 'password'} placeholder="password" {...register('confirm', { required: true })} className="input input-bordered" required />
                 {errors.confirm &&
                   <label className="label">
                     <span className="label-text text-red-500">Confirm Password Is Required</span>
@@ -126,7 +126,7 @@ const Register = () => {
 
               <div className="form-control">
                 <label className="cursor-pointer label justify-start">
-                  <input onClick={handleShowPassword} type="checkbox" className="checkbox checkbox-warning mr-2" />
+                  <input onClick={handleShowPassword} type="checkbox" className="checkbox checkbox-warning mr-2" required />
                   <span className="label-text">Show Password</span>
                 </label>
               </div>
