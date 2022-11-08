@@ -20,7 +20,7 @@ export const routes = createBrowserRouter([
       {
         path: '/',
         element: <Home></Home>,
-        loader: () => fetch('http://localhost:5000/popular-services')
+        loader: () => fetch('https://legal-network-server.vercel.app/popular-services')
       },
       {
         path: '/home',
