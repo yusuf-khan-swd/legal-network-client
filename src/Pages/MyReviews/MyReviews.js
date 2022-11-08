@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
-import useTitle from '../../../hooks/useTitle';
+import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
+import useTitle from '../../hooks/useTitle';
+import ReviewCard from '../Review/ReviewCard/ReviewCard';
 
 const MyReviews = () => {
   const { logOut, user } = useContext(AuthContext);
@@ -26,6 +27,9 @@ const MyReviews = () => {
   return (
     <div>
       <h2>Reviews {reviews.length} </h2>
+      {
+        reviews.map(review => <ReviewCard key={review._id} review={review}></ReviewCard>)
+      }
     </div>
   );
 };
