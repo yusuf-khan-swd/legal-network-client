@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
-import useTitle from '../../hooks/useTitle';
+import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
+import useTitle from '../../../hooks/useTitle';
 
 const MyReviews = () => {
   const { logOut, user } = useContext(AuthContext);

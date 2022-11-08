@@ -8,7 +8,7 @@ import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import AddService from "../../Pages/Service/AddService/AddService";
 import Services from "../../Pages/Service/Services/Services";
 import ServiceDetails from "../../Pages/Service/ServiceDetails/ServiceDetails";
-import MyReviews from "../../Pages/MyReviews/MyReviews";
+import MyReviews from "../../Pages/Review/MyReviews/MyReviews";
 
 export const routes = createBrowserRouter([
   {
