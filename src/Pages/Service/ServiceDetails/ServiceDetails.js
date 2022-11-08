@@ -1,13 +1,14 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { Link, useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
+import ReviewCard from '../../Review/ReviewCard/ReviewCard';
 
 const ServiceDetails = () => {
-  const { photoURL, name, description, _id } = useLoaderData();
   const { user } = useContext(AuthContext);
-  // console.log(user);
+  const { photoURL, name, description, _id } = useLoaderData();
+  const [reviews, setReviews] = useState([]);
 
   const { register, handleSubmit, formState: { errors } } = useForm();
 
@@ -31,6 +32,14 @@ const ServiceDetails = () => {
         }
       })
   };
+
+  useEffect(() => {
+    fetch('http://localhost:5000/reviews')
+      .then(res => res.json())
+      .then(data => {
+        setReviews(data);
+      })
+  }, []);
 
   return (
     <div>
@@ -74,6 +83,11 @@ const ServiceDetails = () => {
         }
         <div>
           <h2 className='text-xl font-bold'>Show all review</h2>
+          <div className='grid grid-cols-1 gap-8'>
+            {
+              reviews.map(review => <ReviewCard key={review._id} review={review}></ReviewCard>)
+            }
+          </div>
         </div>
       </div>
     </div>
