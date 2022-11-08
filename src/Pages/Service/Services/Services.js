@@ -1,6 +1,6 @@
 import React from 'react';
 import { useLoaderData } from 'react-router-dom';
-import ServiceCard from '../../Shared/ServiceCard/ServiceCard';
+import ServiceCard from '../ServiceCard/ServiceCard';
 
 const Services = () => {
   const services = useLoaderData();
