@@ -50,7 +50,7 @@ const Footer = () => {
           </div>
         </div>
         <div className="flex items-center justify-center px-6 pt-12 text-sm">
-          <span className="dark:text-gray-400">&copy; Copyright 2022 . All Rights Reserved <Link to='/' className='text-orange-400'>Legal Network</Link> .</span>
+          <span className="dark:text-gray-400">&copy; Copyright 2022 . All Rights <Link to='/' className='text-orange-400'>Legal Network</Link> Reserved.</span>
         </div>
       </footer>
     </div>
