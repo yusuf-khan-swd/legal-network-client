@@ -15,7 +15,7 @@ const ServiceDetails = () => {
   const onSubmit = value => {
     value.name = user.displayName;
     value.email = user.email;
-    value.photoURL = user.photoURL;
+    value.img = user.photoURL;
     value.serviceId = _id;
 
     fetch('http://localhost:5000/reviews', {

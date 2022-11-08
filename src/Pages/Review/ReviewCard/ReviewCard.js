@@ -1,17 +1,22 @@
 import React from 'react';
+import { FaUser } from 'react-icons/fa';
 
 const ReviewCard = ({ review }) => {
   return (
-    <div className="card bg-base-100 max-w-screen-sm shadow-xl">
-      <div>
-        <figure><img src="https://placeimg.com/200/280/arch" className='h-10 w-10 rounded-full' alt="Movie" /></figure>
-        <h2 className="card-title"> {review?.name} </h2>
-      </div>
-      <div className="card-body">
-        <h2 className="card-title">New movie is released!</h2>
-        <p>Click the button to watch on Jetflix app.</p>
-        <div className="card-actions justify-end">
-          <button className="btn btn-primary">Watch</button>
+    <div className='max-w-screen-md border px-4 py-16 md:px-24 lg:px-8 lg:py-20 rounded-md mx-auto m-5'>
+      <div className="card card-compact w-96 bg-base-100 shadow-xl mx-auto">
+        <div className='flex'>
+          {
+            review?.img ?
+              <figure><img src={review?.img} className="h-9 w-9 rounded-full" alt={review?.name} /></figure>
+              :
+              <button> <FaUser></FaUser> </button>
+          }
+          <p className='text-gray-600'>{review?.name}</p>
+        </div>
+        <div className="card-body">
+          <h2 className="card-title">{review?.name}</h2>
+          <p>{review?.description}</p>
         </div>
       </div>
     </div>
