@@ -126,7 +126,7 @@ const Register = () => {
 
               <div className="form-control">
                 <label className="cursor-pointer label justify-start">
-                  <input onClick={handleShowPassword} type="checkbox" className="checkbox checkbox-warning mr-2" required />
+                  <input onClick={handleShowPassword} type="checkbox" className="checkbox checkbox-warning mr-2" />
                   <span className="label-text">Show Password</span>
                 </label>
               </div>
