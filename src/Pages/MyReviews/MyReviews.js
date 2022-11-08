@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
+import toast from 'react-hot-toast';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 import useTitle from '../../hooks/useTitle';
 import MyReviewsCard from './MyReviewsCard';
@@ -24,6 +25,24 @@ const MyReviews = () => {
         setReviews(data);
       })
   }, [user?.email, logOut]);
+
+  const handleDeleteReview = id => {
+    fetch(`http://localhost:5000/my-reviews/${id}`, {
+      method: 'DELETE',
+      headers: {
+        authorization: `Bearer ${localStorage.getItem('legal-token')}`
+      }
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.deletedCount > 0) {
+          toast.success('Review is Deleted!!');
+          const newReviews = reviews.filter(rv => rv._id !== id);
+          setReviews(newReviews);
+        }
+      })
+  };
+
   return (
     <div>
       <h2>Reviews {reviews.length} </h2>
@@ -41,7 +60,7 @@ const MyReviews = () => {
           </thead>
           <tbody>
             {
-              reviews.map(review => <MyReviewsCard key={review._id} review={review}></MyReviewsCard>)
+              reviews.map(review => <MyReviewsCard key={review._id} review={review} handleDeleteReview={handleDeleteReview}></MyReviewsCard>)
             }
 
           </tbody>

@@ -1,8 +1,9 @@
 import React from 'react';
 import { FaUser } from 'react-icons/fa';
 
-const MyReviewsCard = ({ review }) => {
-  const { img, name, description, title } = review;
+const MyReviewsCard = ({ review, handleDeleteReview }) => {
+  const { img, name, description, title, _id } = review;
+
   return (
     <tr>
       <th>
@@ -33,7 +34,7 @@ const MyReviewsCard = ({ review }) => {
       </td>
       <td>Purple</td>
       <th>
-        <button className="btn btn-ghost btn-xs">Delete</button>
+        <button onClick={() => handleDeleteReview(_id)} className="btn btn-ghost btn-xs">Delete</button>
       </th>
     </tr>
   );
