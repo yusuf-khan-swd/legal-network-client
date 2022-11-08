@@ -19,7 +19,8 @@ export const routes = createBrowserRouter([
       },
       {
         path: '/home',
-        element: <PrivateRoute><Home></Home></PrivateRoute>
+        element: <Home></Home>,
+        loader: () => fetch('http://localhost:5000/popular-services')
       },
       {
         path: '/add-service',
