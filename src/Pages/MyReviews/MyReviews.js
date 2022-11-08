@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from 'react';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 import useTitle from '../../hooks/useTitle';
 
-const Reviews = () => {
+const MyReviews = () => {
   const { logOut, user } = useContext(AuthContext);
   useTitle('Reviews')
 
@@ -29,4 +29,4 @@ const Reviews = () => {
   );
 };
 
-export default Reviews;
+export default MyReviews;

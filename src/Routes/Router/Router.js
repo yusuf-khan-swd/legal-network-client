@@ -5,10 +5,10 @@ import Home from "../../Pages/Home/Home/Home";
 import Login from "../../Pages/Logins/Login";
 import Register from "../../Pages/Logins/Register";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
-import Reviews from "../../Pages/Reviews/Reviews";
 import AddService from "../../Pages/Service/AddService/AddService";
 import Services from "../../Pages/Service/Services/Services";
 import ServiceDetails from "../../Pages/Service/ServiceDetails/ServiceDetails";
+import MyReviews from "../../Pages/MyReviews/MyReviews";
 
 export const routes = createBrowserRouter([
   {
@@ -42,7 +42,7 @@ export const routes = createBrowserRouter([
       },
       {
         path: '/my-reviews',
-        element: <PrivateRoute><Reviews></Reviews></PrivateRoute>
+        element: <PrivateRoute><MyReviews></MyReviews></PrivateRoute>
       },
       {
         path: '/login',
