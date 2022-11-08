@@ -9,12 +9,13 @@ import AddService from "../../Pages/Service/AddService/AddService";
 import Services from "../../Pages/Service/Services/Services";
 import ServiceDetails from "../../Pages/Service/ServiceDetails/ServiceDetails";
 import MyReviews from "../../Pages/MyReviews/MyReviews";
+import Error from "../../Pages/Others/Error/Error";
 
 export const routes = createBrowserRouter([
   {
     path: '/',
     element: <Main></Main>,
-    errorElement: <h2 className="text-3xl font-bold">Error Page</h2>,
+    errorElement: <Error></Error>,
     children: [
       {
         path: '/',
