@@ -5,7 +5,7 @@ const Reviews = () => {
   const { logOut, user } = useContext(AuthContext);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/reviews?email=${user?.email}`, {
+    fetch(`https://legal-network-server.vercel.app/reviews?email=${user?.email}`, {
       headers: {
         authorization: `Bearer ${localStorage.getItem('legal-token')}`
       }
