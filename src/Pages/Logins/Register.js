@@ -3,10 +3,12 @@ import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
+import useTitle from '../../hooks/useTitle';
 
 const Register = () => {
   const { createUser, addUserProfile } = useContext(AuthContext);
   const [showPassword, setShowPassword] = useState(false);
+  useTitle('Register')
 
   const { register, handleSubmit } = useForm();
 
