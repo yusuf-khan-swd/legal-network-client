@@ -1,8 +1,9 @@
 import React, { useContext } from 'react';
 import toast from 'react-hot-toast';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 import { FaUser } from 'react-icons/fa';
+import './Header.css';
 
 const Header = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -29,16 +30,16 @@ const Header = () => {
               </label>
               <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
                 <li>
-                  <Link to='/home'>Home</Link>
+                  <NavLink className={({ isActive }) => isActive ? 'active' : undefined} to='/home'>Home</NavLink>
                 </li>
                 {
                   user?.uid ?
                     <>
                       <li>
-                        <Link to='/my-reviews'>My Reviews</Link>
+                        <NavLink className={({ isActive }) => isActive ? 'active' : undefined} to='/my-reviews'>My Reviews</NavLink>
                       </li>
                       <li>
-                        <Link to='/add-service'>Add Service</Link>
+                        <NavLink className={({ isActive }) => isActive ? 'active' : undefined} to='/add-service'>Add Service</NavLink>
                       </li>
                       <li><button onClick={handleLogOut}>Logout</button></li>
                     </>
@@ -48,7 +49,7 @@ const Header = () => {
                     </>
                 }
                 <li className='border-2 border-orange-400 rounded-lg'>
-                  <Link to='/blog'>Blog</Link>
+                  <NavLink className={({ isActive }) => isActive ? 'active' : undefined} to='/blog'>Blog</NavLink>
                 </li>
               </ul>
             </div>
@@ -57,16 +58,16 @@ const Header = () => {
           <div className="navbar-center hidden lg:flex">
             <ul className="menu menu-horizontal p-0">
               <li>
-                <Link to='/home'>Home</Link>
+                <NavLink className={({ isActive }) => isActive ? 'active' : undefined} to='/home'>Home</NavLink>
               </li>
               {
                 user?.uid ?
                   <>
                     <li>
-                      <Link to='/my-reviews'>My Reviews</Link>
+                      <NavLink className={({ isActive }) => isActive ? 'active' : undefined} to='/my-reviews'>My Reviews</NavLink>
                     </li>
                     <li>
-                      <Link to='/add-service'>Add Service</Link>
+                      <NavLink className={({ isActive }) => isActive ? 'active' : undefined} to='/add-service'>Add Service</NavLink>
                     </li>
                     <li><button onClick={handleLogOut}>Logout</button></li>
                   </>
@@ -78,7 +79,7 @@ const Header = () => {
                   </>
               }
               <li className='border-2 border-orange-400 rounded-lg'>
-                <Link to='/blog'>Blog</Link>
+                <NavLink className={({ isActive }) => isActive ? 'active' : undefined} to='/blog'>Blog</NavLink>
               </li>
             </ul>
           </div>
