@@ -1,11 +1,22 @@
 import React, { useContext } from 'react';
+import { useForm } from 'react-hook-form';
 import { Link, useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 
 const ServiceDetails = () => {
   const { photoURL, name, description, _id } = useLoaderData();
   const { user } = useContext(AuthContext);
-  console.log(user);
+  // console.log(user);
+
+  const { register, handleSubmit, formState: { errors } } = useForm();
+
+  const onSubmit = value => {
+    value.name = user.displayName;
+    value.email = user.email;
+    value.photoURL = user.photoURL;
+    value.serviceId = _id;
+    console.log(value);
+  };
 
   return (
     <div>
@@ -24,10 +35,23 @@ const ServiceDetails = () => {
         {
           user?.uid ?
             <div>
-              <form>
-                <textarea name="" id="" cols="30" rows="5"></textarea>
-                <button type='submit'>Add Review</button>
-              </form>
+              <div className="hero-content">
+                <div className="card flex-shrink-0 w-full max-w-screen-sm shadow-2xl bg-base-100">
+                  <form onSubmit={handleSubmit(onSubmit)} className="card-body">
+                    <div className="form-control">
+                      <textarea {...register('description', { minLength: 20 })} className="textarea textarea-bordered" cols="30" rows="5" placeholder="Description" defaultValue='This Service is'></textarea>
+                      {errors.description &&
+                        <label className="label">
+                          <span className="label-text text-red-500">Please add some of your thought.</span>
+                        </label>
+                      }
+                    </div>
+                    <div className="form-control mt-6">
+                      <button type='submit' className="btn bg-orange-50 border border-orange-400 text-orange-400 hover:bg-orange-200 hover:border-orange-600">Add Review</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
             </div>
             :
             <div className='pb-3 pl-3'>
