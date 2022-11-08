@@ -29,6 +29,8 @@ const ServiceDetails = () => {
       .then(data => {
         if (data.acknowledged) {
           toast.success(`Thank you ${user.displayName} for your review.`);
+          const newReviews = [...reviews, value];
+          setReviews(newReviews);
         }
       })
   };
