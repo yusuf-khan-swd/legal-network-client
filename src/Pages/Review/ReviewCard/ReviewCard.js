@@ -3,19 +3,19 @@ import { FaUser } from 'react-icons/fa';
 
 const ReviewCard = ({ review }) => {
   return (
-    <div className='max-w-screen-md border px-4 py-16 md:px-24 lg:px-8 lg:py-20 rounded-md mx-auto m-5'>
-      <div className="card card-compact w-96 bg-base-100 shadow-xl mx-auto">
-        <div className='flex'>
+    <div className='rounded-md mx-auto m-5'>
+      <div className="card card-compact w-96 bg-base-100 shadow-xl mx-auto p-5">
+        <div className='flex items-center'>
           {
             review?.img ?
-              <figure><img src={review?.img} className="h-9 w-9 rounded-full" alt={review?.name} /></figure>
+              <figure><img src={review?.img} className="h-9 w-9 rounded-full mr-2" alt={review?.name} /></figure>
               :
-              <button> <FaUser></FaUser> </button>
+              <button> <FaUser className="h-9 w-9 rounded-full mr-2"></FaUser> </button>
           }
-          <p className='text-gray-600'>{review?.name}</p>
+          <p className='text-gray-500'>{review?.name}</p>
         </div>
         <div className="card-body">
-          <h2 className="card-title">{review?.name}</h2>
+          <h2 className="card-title">{review?.title}</h2>
           <p>{review?.description}</p>
         </div>
       </div>

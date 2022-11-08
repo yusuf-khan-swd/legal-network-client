@@ -64,7 +64,21 @@ const ServiceDetails = () => {
                 <div className="card flex-shrink-0 w-full max-w-screen-sm shadow-2xl bg-base-100">
                   <form onSubmit={handleSubmit(onSubmit)} className="card-body">
                     <div className="form-control">
-                      <textarea {...register('description', { minLength: 20 })} className="textarea textarea-bordered" cols="30" rows="5" placeholder="Description" defaultValue='This Service is'></textarea>
+                      <label className="label">
+                        <span className="label-text font-semibold text-lg">Title:</span>
+                      </label>
+                      <input type="text" {...register('title', { required: true })} placeholder="Title Name" className="input input-bordered" required />
+                      {errors.title &&
+                        <label className="label">
+                          <span className="label-text text-red-500">Title Is Required</span>
+                        </label>
+                      }
+                    </div>
+                    <div className="form-control">
+                      <label className="label">
+                        <span className="label-text font-semibold text-lg">Description:</span>
+                      </label>
+                      <textarea {...register('description', { minLength: 20 })} className="textarea textarea-bordered" cols="30" rows="3" placeholder="Description" defaultValue={`${name}`}></textarea>
                       {errors.description &&
                         <label className="label">
                           <span className="label-text text-red-500">Please add some of your thought.</span>
