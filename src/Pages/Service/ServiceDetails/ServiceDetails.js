@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
+import toast from 'react-hot-toast';
 import { Link, useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 
@@ -15,7 +16,20 @@ const ServiceDetails = () => {
     value.email = user.email;
     value.photoURL = user.photoURL;
     value.serviceId = _id;
-    console.log(value);
+
+    fetch('http://localhost:5000/reviews', {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json'
+      },
+      body: JSON.stringify(value)
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.acknowledged) {
+          toast.success(`Thank you ${user.displayName} for your review.`);
+        }
+      })
   };
 
   return (
