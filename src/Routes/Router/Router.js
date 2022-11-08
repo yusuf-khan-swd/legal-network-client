@@ -12,6 +12,7 @@ export const routes = createBrowserRouter([
   {
     path: '/',
     element: <Main></Main>,
+    errorElement: <h2 className="text-3xl font-bold">Error Page</h2>,
     children: [
       {
         path: '/',
