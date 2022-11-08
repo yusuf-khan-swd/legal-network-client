@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 import useTitle from '../../hooks/useTitle';
-import ReviewCard from '../Review/ReviewCard/ReviewCard';
+import ReviewCard from '../Service/ServiceDetails/ReviewCard';
 
 const MyReviews = () => {
   const { logOut, user } = useContext(AuthContext);

@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { Link, useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
-import ReviewCard from '../../Review/ReviewCard/ReviewCard';
+import ReviewCard from './ReviewCard';
 
 const ServiceDetails = () => {
   const { user } = useContext(AuthContext);
