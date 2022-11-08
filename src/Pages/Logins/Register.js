@@ -10,7 +10,7 @@ const Register = () => {
   const [showPassword, setShowPassword] = useState(false);
   useTitle('Register')
 
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, reset, formState: { errors } } = useForm();
 
   const onSubmit = value => {
     const { name, photoURL, email, password, confirm } = value;
@@ -24,6 +24,7 @@ const Register = () => {
         const user = result.user;
         handleAddUserProfile(name, photoURL);
         toast.success('Registration is successful!!!');
+        reset();
 
         fetch(`http://localhost:5000/jwt?email=${user.email}`)
           .then(res => res.json())
@@ -62,17 +63,84 @@ const Register = () => {
 
   return (
     <div>
-      <h2>Register</h2>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <input {...register('name')} type="text" placeholder='Full Name' />
-        <input {...register('photoURL')} type="text" placeholder='Photo URL' />
-        <input {...register('email')} type="email" placeholder='Email' />
-        <input {...register('password')} type={`${showPassword ? 'text' : 'password'}`} placeholder='Password' />
-        <input {...register('confirm')} type={`${showPassword ? 'text' : 'password'}`} placeholder='Confirm Password' />
-        <input type="checkbox" onClick={handleShowPassword} id='showPass' /> <label htmlFor='showPass'>Show Password</label>
-        <input type="submit" />
-      </form>
-      <Link to='/login'>Login</Link>
+      <div className="min-h-screen bg-base-200">
+        <div className="hero-content">
+          <div className="card flex-shrink-0 w-full max-w-screen-sm shadow-2xl bg-base-100">
+            <form onSubmit={handleSubmit(onSubmit)} className="card-body">
+              <h2 className='text-3xl font-bold text-center hover:underline cursor-pointer text-orange-500'>Register</h2>
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Full Name</span>
+                </label>
+                <input type="text" {...register('name', { required: true })} placeholder="Full Name" className="input input-bordered" />
+                {errors.name &&
+                  <label className="label">
+                    <span className="label-text text-red-500">Full Name Is Required</span>
+                  </label>
+                }
+              </div>
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Photo URL</span>
+                </label>
+                <input type="text" {...register('photoURL', { required: true })} placeholder="Photo URL" className="input input-bordered" />
+                {errors.photoURL &&
+                  <label className="label">
+                    <span className="label-text text-red-500">Photo URL Is Required</span>
+                  </label>
+                }
+              </div>
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Email</span>
+                </label>
+                <input type="email" {...register('email', { required: true })} placeholder="email" className="input input-bordered" />
+                {errors.email &&
+                  <label className="label">
+                    <span className="label-text text-red-500">Email Is Required</span>
+                  </label>
+                }
+              </div>
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Password</span>
+                </label>
+                <input type={showPassword ? 'text' : 'password'} placeholder="password" {...register('password', { required: true })} className="input input-bordered" />
+                {errors.password &&
+                  <label className="label">
+                    <span className="label-text text-red-500">Password Is Required</span>
+                  </label>
+                }
+              </div>
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Confirm Password</span>
+                </label>
+                <input type={showPassword ? 'text' : 'password'} placeholder="password" {...register('confirm', { required: true })} className="input input-bordered" />
+                {errors.confirm &&
+                  <label className="label">
+                    <span className="label-text text-red-500">Confirm Password Is Required</span>
+                  </label>
+                }
+              </div>
+
+              <div className="form-control">
+                <label className="cursor-pointer label justify-start">
+                  <input onClick={handleShowPassword} type="checkbox" className="checkbox checkbox-warning mr-2" />
+                  <span className="label-text">Show Password</span>
+                </label>
+              </div>
+              <div className="form-control mt-6">
+                <button type='submit' className="btn bg-orange-50 border border-orange-400 text-orange-400 hover:bg-orange-200 hover:border-orange-600">Login</button>
+              </div>
+            </form>
+            <div className='pb-5 pl-3 text-center'>
+              Already have an account? <Link to='/login' className='text-violet-600 hover:underline'>Please login</Link>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
   );
 };

@@ -74,13 +74,12 @@ const Login = () => {
                     <span className="label-text text-red-500">Password Is Required</span>
                   </label>
                 }
-
-                <div className="form-control">
-                  <label className="cursor-pointer label justify-start">
-                    <input onClick={handleShowPassword} type="checkbox" className="checkbox checkbox-warning mr-2" required />
-                    <span className="label-text">Show Password</span>
-                  </label>
-                </div>
+              </div>
+              <div className="form-control">
+                <label className="cursor-pointer label justify-start">
+                  <input onClick={handleShowPassword} type="checkbox" className="checkbox checkbox-warning mr-2" required />
+                  <span className="label-text">Show Password</span>
+                </label>
               </div>
               <div className="form-control mt-6">
                 <button type='submit' className="btn bg-orange-50 border border-orange-400 text-orange-400 hover:bg-orange-200 hover:border-orange-600">Login</button>
