@@ -1,8 +1,11 @@
-import React from 'react';
-import { useLoaderData } from 'react-router-dom';
+import React, { useContext } from 'react';
+import { Link, useLoaderData } from 'react-router-dom';
+import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 
 const ServiceDetails = () => {
   const { photoURL, name, description, _id } = useLoaderData();
+  const { user } = useContext(AuthContext);
+  console.log(user);
 
   return (
     <div>
@@ -16,7 +19,25 @@ const ServiceDetails = () => {
           </div>
         </div>
       </div>
-
+      <div>
+        <h2 className='text-3xl font-bold'>Review Section</h2>
+        {
+          user?.uid ?
+            <div>
+              <form>
+                <textarea name="" id="" cols="30" rows="5"></textarea>
+                <button type='submit'>Add Review</button>
+              </form>
+            </div>
+            :
+            <div className='pb-3 pl-3'>
+              Please login to add a review <Link to='/login' className='text-violet-600 hover:underline'>login</Link>
+            </div>
+        }
+        <div>
+          <h2 className='text-xl font-bold'>Show all review</h2>
+        </div>
+      </div>
     </div>
   );
 };
