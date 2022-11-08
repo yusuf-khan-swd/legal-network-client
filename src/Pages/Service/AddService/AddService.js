@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
+import toast from 'react-hot-toast';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 import useTitle from '../../../hooks/useTitle';
 
@@ -7,7 +8,7 @@ const AddService = () => {
   const { user } = useContext(AuthContext);
   useTitle('Add Products')
 
-  const { register, handleSubmit, formState: { errors } } = useForm();
+  const { register, handleSubmit, reset, formState: { errors } } = useForm();
 
   const onSubmit = value => {
     console.log(value);
@@ -21,7 +22,10 @@ const AddService = () => {
     })
       .then(res => res.json())
       .then(data => {
-        console.log(data);
+        if (data.acknowledged) {
+          toast.success('Service Added!!')
+          reset();
+        }
       })
   };
 
