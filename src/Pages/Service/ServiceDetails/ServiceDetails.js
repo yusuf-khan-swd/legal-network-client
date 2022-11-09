@@ -7,7 +7,7 @@ import ReviewCard from './ReviewCard';
 
 const ServiceDetails = () => {
   const { user } = useContext(AuthContext);
-  const { photoURL, name, description, _id } = useLoaderData();
+  const { photoURL, name, price, description, _id } = useLoaderData();
   const [reviews, setReviews] = useState([]);
 
   const { register, handleSubmit, reset, formState: { errors } } = useForm();
@@ -48,10 +48,11 @@ const ServiceDetails = () => {
     <div>
       <h2 className='text-3xl font-bold'>Service Section</h2>
       <div className='max-w-screen-md border px-4 py-16 md:px-24 lg:px-8 lg:py-20 rounded-md mx-auto m-5'>
-        <div className="card card-compact w-96 bg-base-100 shadow-xl mx-auto">
+        <div className="card card-compact w-96 lg:w-3/4 bg-base-100 shadow-xl mx-auto">
           <figure><img src={photoURL} className="h-72" alt={name} /></figure>
           <div className="card-body">
             <h2 className="card-title">{name}</h2>
+            <h2 className="card-title">Price: {price}</h2>
             <p>{description}</p>
           </div>
         </div>
