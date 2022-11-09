@@ -16,11 +16,6 @@ const EditReview = () => {
       return;
     }
 
-    const { title, description } = value;
-    if (!title || !description) {
-      return toast.error('Please add something to update.');
-    }
-
     fetch(`http://localhost:5000/my-review/${id}`, {
       method: 'PUT',
       headers: {
