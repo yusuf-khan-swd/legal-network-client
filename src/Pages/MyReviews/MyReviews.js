@@ -9,8 +9,16 @@ const MyReviews = () => {
   const [reviews, setReviews] = useState([]);
   useTitle('My Reviews');
 
+  let myQuery = '';
+  if (user.email) {
+    myQuery = user.email;
+  }
+  else if (user.displayName) {
+    myQuery = user.displayName;
+  }
+
   useEffect(() => {
-    fetch(`http://localhost:5000/my-reviews?email=${user?.email}`, {
+    fetch(`http://localhost:5000/my-reviews?email=${myQuery}`, {
       headers: {
         authorization: `Bearer ${localStorage.getItem('legal-token')}`
       }
@@ -24,7 +32,7 @@ const MyReviews = () => {
       .then(data => {
         setReviews(data);
       })
-  }, [user?.email, logOut]);
+  }, [myQuery, logOut]);
 
   const handleDeleteReview = id => {
     fetch(`http://localhost:5000/my-reviews/${id}`, {
