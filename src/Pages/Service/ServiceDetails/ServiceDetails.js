@@ -31,7 +31,7 @@ const ServiceDetails = () => {
       .then(data => {
         if (data.acknowledged) {
           toast.success(`Thank you ${user.displayName} for your review.`);
-          const newReviews = [...reviews, value];
+          const newReviews = [value, ...reviews];
           setReviews(newReviews);
           reset();
         }
