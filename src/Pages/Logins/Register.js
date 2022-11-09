@@ -177,7 +177,7 @@ const Register = () => {
                 </label>
               </div>
               <div className="form-control mt-6">
-                <button type='submit' className="btn bg-orange-50 border border-orange-400 text-orange-400 hover:bg-orange-200 hover:border-orange-600">Login</button>
+                <button type='submit' className="btn bg-orange-50 border border-orange-400 text-orange-400 hover:bg-orange-200 hover:border-orange-600">Register</button>
               </div>
             </form>
             <button onClick={handleGoogleLogIn} className='btn w-full rounded-full mb-3'>
