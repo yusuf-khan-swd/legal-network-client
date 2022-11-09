@@ -11,7 +11,7 @@ const AddService = () => {
   const { register, handleSubmit, reset, formState: { errors } } = useForm();
 
   const onSubmit = value => {
-    console.log(value);
+    value.date = new Date();
 
     fetch('http://localhost:5000/services', {
       method: 'POST',
