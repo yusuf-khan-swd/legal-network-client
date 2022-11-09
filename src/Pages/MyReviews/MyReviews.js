@@ -51,15 +51,15 @@ const MyReviews = () => {
             You Have 0 Items
           </div>
           :
-          <div className="overflow-x-auto w-full">
+          <div className="overflow-x-auto w-full min-h-screen">
             <table className="table w-full">
               <thead>
                 <tr>
                   <th>
                   </th>
                   <th>Name</th>
-                  <th>Job</th>
-                  <th>Favorite Color</th>
+                  <th>Review</th>
+                  <th>Service</th>
                   <th></th>
                 </tr>
               </thead>
