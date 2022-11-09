@@ -19,6 +19,7 @@ const ServiceDetails = () => {
     value.email = user.email;
     value.img = user.photoURL;
     value.serviceId = _id;
+    value.date = new Date();
 
     fetch('http://localhost:5000/reviews', {
       method: 'POST',
