@@ -6,9 +6,11 @@ import Feature from '../Feature/Feature';
 import Team from '../Team/Team';
 import 'react-photo-view/dist/react-photo-view.css';
 import { PhotoProvider } from 'react-photo-view';
+import useTitle from '../../../hooks/useTitle';
 
 const Home = () => {
   const popularServices = useLoaderData();
+  useTitle('Home');
 
   return (
     <div className='container mx-auto my-8'>

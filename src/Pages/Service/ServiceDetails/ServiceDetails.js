@@ -3,12 +3,14 @@ import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { Link, useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
+import useTitle from '../../../hooks/useTitle';
 import ReviewCard from './ReviewCard';
 
 const ServiceDetails = () => {
   const { user } = useContext(AuthContext);
   const { photoURL, name, price, description, _id } = useLoaderData();
   const [reviews, setReviews] = useState([]);
+  useTitle('Service Details');
 
   const { register, handleSubmit, reset, formState: { errors } } = useForm();
 

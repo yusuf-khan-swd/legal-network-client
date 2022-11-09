@@ -3,9 +3,11 @@ import { useLoaderData } from 'react-router-dom';
 import ServiceCard from '../ServiceCard/ServiceCard';
 import 'react-photo-view/dist/react-photo-view.css';
 import { PhotoProvider } from 'react-photo-view';
+import useTitle from '../../../hooks/useTitle';
 
 const Services = () => {
   const services = useLoaderData();
+  useTitle('Services');
 
   return (
     <div className='container mx-auto my-8'>

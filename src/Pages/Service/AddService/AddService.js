@@ -6,7 +6,7 @@ import useTitle from '../../../hooks/useTitle';
 
 const AddService = () => {
   const { user } = useContext(AuthContext);
-  useTitle('Add Products')
+  useTitle('Add Service');
 
   const { register, handleSubmit, reset, formState: { errors } } = useForm();
 
