@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
+import toast from 'react-hot-toast';
 import { useParams } from 'react-router-dom';
 
 const EditReview = () => {
@@ -14,7 +15,27 @@ const EditReview = () => {
     if (!isConfirm) {
       return;
     }
-    console.log(value);
+
+    const { title, description } = value;
+    if (!title || !description) {
+      return toast.error('Please add something to update.');
+    }
+
+    fetch(`http://localhost:5000/my-review/${id}`, {
+      method: 'PUT',
+      headers: {
+        'content-type': 'application/json'
+      },
+      body: JSON.stringify(value)
+    })
+      .then(res => res.json())
+      .then(data => {
+        console.log(data);
+        if (data.modifiedCount > 0) {
+          toast.success('Update was successful.');
+          setReview(value);
+        }
+      })
   };
 
   const handleCancel = () => {

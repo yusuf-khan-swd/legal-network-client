@@ -14,8 +14,6 @@ const MyReviewsCard = ({ review, handleDeleteReview }) => {
       })
   }, [serviceId]);
 
-  console.log(service)
-
   return (
     <tr>
       <th>
