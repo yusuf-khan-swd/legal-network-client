@@ -46,10 +46,22 @@ const Login = () => {
     googleLogIn()
       .then(result => {
         const user = result.user;
-        console.log(user);
+        toast.success(`${user.displayName} you are now logged in!!`);
+
+        fetch(`http://localhost:5000/jwt?email=${user.email}`)
+          .then(res => res.json())
+          .then(data => {
+            localStorage.setItem('legal-token', data.token);
+            navigate(from, { replace: true });
+          })
+          .catch(err => {
+            console.log('error: ', err);
+          })
+
       })
       .catch(err => {
         console.error('error: ', err);
+        toast.error(err.message);
       })
   };
 
