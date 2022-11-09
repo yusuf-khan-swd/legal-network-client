@@ -1,8 +1,18 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { FaUser } from 'react-icons/fa';
 
 const MyReviewsCard = ({ review, handleDeleteReview }) => {
-  const { img, name, description, title, _id } = review;
+  const { img, name, description, title, _id, serviceId } = review;
+  const [service, setService] = useState({});
+  const { name: serviceName } = service;
+
+  useEffect(() => {
+    fetch(`http://localhost:5000/services/${serviceId}`)
+      .then(res => res.json())
+      .then(data => {
+        setService(data)
+      })
+  }, [serviceId]);
 
   return (
     <tr>
@@ -32,7 +42,7 @@ const MyReviewsCard = ({ review, handleDeleteReview }) => {
         <br />
         <span className="badge badge-ghost badge-sm"> {description} </span>
       </td>
-      <td>Purple</td>
+      <td>{serviceName}</td>
       <th>
         <button onClick={() => handleDeleteReview(_id)} className="btn btn-ghost btn-xs">Delete</button>
       </th>
