@@ -97,8 +97,8 @@ const ServiceDetails = () => {
               </div>
             </div>
             :
-            <div className='pb-3 pl-3'>
-              Please login to add a review <Link to='/login' className='text-violet-600 hover:underline'>login</Link>
+            <div className='pb-3 pl-3 text-center font-bold mt-3'>
+              Please login to add a review <Link to='/login' className='text-violet-600 underline'>login</Link>.
             </div>
         }
         <div>
