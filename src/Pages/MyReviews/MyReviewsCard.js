@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { FaUser } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
 const MyReviewsCard = ({ review, handleDeleteReview }) => {
-  const { img, name, description, title, _id, serviceId } = review;
+  const { name, description, title, _id, serviceId } = review;
   const [service, setService] = useState({});
-  const { name: serviceName } = service;
+  const { name: serviceName, photoURL } = service;
 
   useEffect(() => {
     fetch(`http://localhost:5000/services/${serviceId}`)
@@ -14,6 +13,8 @@ const MyReviewsCard = ({ review, handleDeleteReview }) => {
         setService(data)
       })
   }, [serviceId]);
+
+  console.log(service)
 
   return (
     <tr>
@@ -24,16 +25,11 @@ const MyReviewsCard = ({ review, handleDeleteReview }) => {
         <div className="flex items-center space-x-3">
           <div className="avatar">
             <div className="mask mask-squircle w-12 h-12">
-              {
-                img ?
-                  <img src={img} alt={name} />
-                  :
-                  <button className='btn'><FaUser></FaUser></button>
-              }
+              <img src={photoURL} alt={name} />
             </div>
           </div>
           <div>
-            <div className="font-bold"> {name} </div>
+            <div className="font-bold"> {serviceName} </div>
             <div className="text-sm opacity-50">United States</div>
           </div>
         </div>
@@ -41,7 +37,7 @@ const MyReviewsCard = ({ review, handleDeleteReview }) => {
       <td>
         {title}
         <br />
-        <span className="badge badge-ghost badge-sm"> {description} </span>
+        <span className="badge badge-ghost badge-sm"> {description.slice(0, 51) + '...'} </span>
       </td>
       <td>{serviceName}</td>
       <th>
