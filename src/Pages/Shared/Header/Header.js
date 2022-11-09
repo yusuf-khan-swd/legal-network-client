@@ -91,9 +91,16 @@ const Header = () => {
                   user?.photoURL ?
                     <img src={user?.photoURL} alt={user?.displayName} />
                     :
-                    <button>
-                      <FaUser className='text-2xl'></FaUser>
-                    </button>
+                    user?.uid ?
+                      <button>
+                        <FaUser className='text-2xl'></FaUser>
+                      </button>
+                      :
+                      <Link to='/login'>
+                        <button>
+                          <FaUser className='text-2xl'></FaUser>
+                        </button>
+                      </Link>
                 }
               </div>
             </label>
