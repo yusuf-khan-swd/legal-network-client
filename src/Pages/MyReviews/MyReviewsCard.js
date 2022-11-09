@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { FaUser } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 const MyReviewsCard = ({ review, handleDeleteReview }) => {
   const { img, name, description, title, _id, serviceId } = review;
@@ -17,7 +18,7 @@ const MyReviewsCard = ({ review, handleDeleteReview }) => {
   return (
     <tr>
       <th>
-        <button className="btn btn-ghost btn-xs">Edit</button>
+        <Link to={`/my-review/${_id}`}><button className="btn btn-ghost btn-xs">Edit</button></Link>
       </th>
       <td>
         <div className="flex items-center space-x-3">
