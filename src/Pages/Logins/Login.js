@@ -140,7 +140,7 @@ const Login = () => {
             <img className='w-9 h-9 mr-3' src={githubLogo} alt="Google Logo" />
             Sign In with Github
           </button>
-          <div className='pb-3 pl-3 text-center'>
+          <div className='pb-5 pl-3 text-center'>
             New to Legal Network? <Link to='/register' className='text-violet-600 hover:underline'>Please Register</Link>
           </div>
         </div>
