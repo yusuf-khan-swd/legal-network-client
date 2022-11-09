@@ -30,7 +30,6 @@ const EditReview = () => {
     })
       .then(res => res.json())
       .then(data => {
-        console.log(data);
         if (data.modifiedCount > 0) {
           toast.success('Update was successful.');
           setReview(value);
@@ -57,13 +56,13 @@ const EditReview = () => {
           <label className="label">
             <span className="label-text font-bold">Title</span>
           </label>
-          <input {...register('title')} type="text" placeholder="Title" defaultValue={title} className="input input-bordered" />
+          <input {...register('title', { required: true })} type="text" placeholder="Title" defaultValue={title} className="input input-bordered" />
         </div>
         <div className="form-control">
           <label className="label">
             <span className="label-text font-bold">Description</span>
           </label>
-          <textarea {...register('description')} className="textarea textarea-bordered" defaultValue={description} cols="30" rows="6"></textarea>
+          <textarea {...register('description', { required: true })} className="textarea textarea-bordered" defaultValue={description} cols="30" rows="6"></textarea>
         </div>
         <div className="form-control mt-6">
           <input type={'submit'} value={'Update'} className="btn btn-warning" />
