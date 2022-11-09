@@ -4,9 +4,11 @@ import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 import useTitle from '../../hooks/useTitle';
+import googleLogo from '../../assets/googleLogo.png';
+import githubLogo from '../../assets/githubLogo.png';
 
 const Register = () => {
-  const { createUser, addUserProfile } = useContext(AuthContext);
+  const { createUser, addUserProfile, googleLogIn, githubLogIn } = useContext(AuthContext);
   const [showPassword, setShowPassword] = useState(false);
   useTitle('Register')
 
@@ -50,6 +52,50 @@ const Register = () => {
 
     addUserProfile(profile)
       .then(() => { })
+      .catch(err => {
+        console.error('error: ', err);
+        toast.error(err.message);
+      })
+  };
+
+  const handleGoogleLogIn = () => {
+    googleLogIn()
+      .then(result => {
+        const user = result.user;
+        toast.success(`${user.displayName} you are now logged in!!`);
+
+        fetch(`http://localhost:5000/jwt?email=${user.email}`)
+          .then(res => res.json())
+          .then(data => {
+            localStorage.setItem('legal-token', data.token);
+          })
+          .catch(err => {
+            console.log('error: ', err);
+          })
+
+      })
+      .catch(err => {
+        console.error('error: ', err);
+        toast.error(err.message);
+      })
+  };
+
+  const handleGithubLogIn = () => {
+    githubLogIn()
+      .then(result => {
+        const user = result.user;
+        toast.success(`${user.displayName} you are now logged In!!`);
+
+        fetch(`http://localhost:5000/jwt?email=${user.displayName}`)
+          .then(res => res.json())
+          .then(data => {
+            localStorage.setItem('legal-token', data.token);
+          })
+          .catch(err => {
+            console.log('error: ', err);
+          })
+
+      })
       .catch(err => {
         console.error('error: ', err);
         toast.error(err.message);
@@ -134,6 +180,14 @@ const Register = () => {
                 <button type='submit' className="btn bg-orange-50 border border-orange-400 text-orange-400 hover:bg-orange-200 hover:border-orange-600">Login</button>
               </div>
             </form>
+            <button onClick={handleGoogleLogIn} className='btn w-full rounded-full mb-3'>
+              <img className='w-9 h-9 mr-3' src={googleLogo} alt="Google Logo" />
+              Sign Up with Google
+            </button>
+            <button onClick={handleGithubLogIn} className='btn w-full rounded-full mb-5 '>
+              <img className='w-9 h-9 mr-3' src={githubLogo} alt="Google Logo" />
+              Sign Up with Github
+            </button>
             <div className='pb-5 pl-3 text-center'>
               Already have an account? <Link to='/login' className='text-violet-600 hover:underline'>Please login</Link>
             </div>
