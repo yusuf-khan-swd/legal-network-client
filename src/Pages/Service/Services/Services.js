@@ -1,13 +1,34 @@
-import React from 'react';
-import { useLoaderData } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
 import ServiceCard from '../ServiceCard/ServiceCard';
 import 'react-photo-view/dist/react-photo-view.css';
 import { PhotoProvider } from 'react-photo-view';
 import useTitle from '../../../hooks/useTitle';
 
+
 const Services = () => {
-  const services = useLoaderData();
+  const [loading, setLoading] = useState(false);
+  const [services, setServices] = useState([]);
   useTitle('Services');
+
+  useEffect(() => {
+    setLoading(true);
+    fetch('http://localhost:5000/services')
+      .then(res => res.json())
+      .then(data => {
+        setServices(data);
+        setLoading(false)
+      })
+  }, []);
+
+  if (loading) {
+    return <div className="h-screen flex items-center justify-center space-x-2">
+      <div className="w-4 h-4 rounded-full animate-pulse bg-orange-400"></div>
+      <div className="w-4 h-4 rounded-full animate-pulse bg-orange-400"></div>
+      <div className="w-4 h-4 rounded-full animate-pulse bg-orange-400"></div>
+      <div className="w-4 h-4 rounded-full animate-pulse bg-orange-400"></div>
+      <div className="w-4 h-4 rounded-full animate-pulse bg-orange-400"></div>
+    </div>
+  }
 
   return (
     <div className='container mx-auto my-8'>
