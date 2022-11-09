@@ -16,6 +16,8 @@ const EditReview = () => {
       return;
     }
 
+    value.date = new Date();
+
     fetch(`http://localhost:5000/my-review/${id}`, {
       method: 'PUT',
       headers: {
