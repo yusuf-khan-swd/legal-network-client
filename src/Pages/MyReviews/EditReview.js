@@ -14,7 +14,7 @@ const EditReview = () => {
     if (!isConfirm) {
       return;
     }
-    console.log(value)
+    console.log(value);
   };
 
   const handleCancel = () => {

@@ -35,6 +35,12 @@ const MyReviews = () => {
   }, [myQuery, logOut]);
 
   const handleDeleteReview = id => {
+    const isConfirm = window.confirm('Are you sure you want to delete?');
+
+    if (!isConfirm) {
+      return;
+    }
+
     fetch(`http://localhost:5000/my-reviews/${id}`, {
       method: 'DELETE',
       headers: {
