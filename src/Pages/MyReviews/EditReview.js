@@ -47,8 +47,8 @@ const EditReview = () => {
   }, [id]);
 
   return (
-    <div className='my-8'>
-      <form onSubmit={handleSubmit(onSubmit)} className='max-w-sm shadow-lg p-5 mx-auto rounded-md'>
+    <div className='my-8 bg-orange-50'>
+      <form onSubmit={handleSubmit(onSubmit)} className='max-w-sm shadow-lg p-5 mx-auto rounded-md bg-white'>
         <div className="form-control">
           <label className="label">
             <span className="label-text font-bold">Title</span>
