@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 import ServiceCard from '../../Service/ServiceCard/ServiceCard';
-import Counter from '../Counter/Counter';
 import Feature from '../Feature/Feature';
 import Team from '../Team/Team';
 import 'react-photo-view/dist/react-photo-view.css';
@@ -35,10 +34,6 @@ const Home = () => {
       <h2 className='text-3xl font-semibold text-center mb-3 underline underline-offset-2 cursor-pointer text-orange-400 mt-8'>Feature Section</h2>
       <Feature></Feature>
       <hr className='w-11/12 mx-auto' />
-      <div className='my-12'>
-        <h2 className='text-xl font-semibold text-center mb-3'>Hot Deal Only Available For</h2>
-        <Counter></Counter>
-      </div>
       <hr className='w-11/12 mx-auto' />
       <Team></Team>
       <hr className='w-11/12 mx-auto' />
