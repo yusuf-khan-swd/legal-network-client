@@ -50,12 +50,12 @@ const ServiceDetails = () => {
   return (
     <div>
       <div className='max-w-screen-md border px-4 py-16 md:px-24 lg:px-8 lg:py-20 rounded-md mx-auto m-5'>
-        <div className="card card-compact w-96 lg:w-3/4 bg-base-100 shadow-xl mx-auto">
+        <div className="card p-2 card-compact w-96 lg:w-3/4 bg-base-100 shadow-xl mx-auto">
           <figure><img src={photoURL} className="h-72 rounded-full" alt={name} /></figure>
           <div className="card-body">
-            <h2 className="card-title">{name}</h2>
-            <h2 className="card-title">Price: {price}</h2>
-            <p>{description}</p>
+            <h2 className="card-title justify-center text-gray-700 uppercase">{name}</h2>
+            <h2 className="card-title text-base justify-center text-gray-500">Price: <span className='text-orange-400'>${price}</span> </h2>
+            <p className='text-gray-600'> <span className='font-semibold text-xl'>Full Details :</span> {description}</p>
           </div>
         </div>
       </div>

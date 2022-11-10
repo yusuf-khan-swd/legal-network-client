@@ -13,7 +13,7 @@ const ServiceCard = ({ service }) => {
         </PhotoView>
       </figure>
       <div className="card-body">
-        <h2 className="card-title justify-center text-gray-700">{name}</h2>
+        <h2 className="card-title justify-center text-gray-700 uppercase">{name}</h2>
         <h2 className="card-title text-base justify-center text-gray-500">Price: <span className='text-orange-400'>${price}</span> </h2>
         <p className='text-gray-400'>{description.slice(0, 100) + '...'}</p>
         <div className="card-actions justify-end">
