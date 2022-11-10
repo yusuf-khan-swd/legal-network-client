@@ -69,7 +69,7 @@ const MyReviews = () => {
             <table className="table w-full">
               <thead>
                 <tr>
-                  <th >
+                  <th>
                   </th>
                   <th>Name</th>
                   <th>Review</th>

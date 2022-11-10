@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 const MyReviewsCard = ({ review, handleDeleteReview }) => {
-  const { name, description, title, _id, serviceId } = review;
+  const { name, description, title, _id, serviceId, date } = review;
   const [service, setService] = useState({});
   const { name: serviceName, photoURL } = service;
 
@@ -28,7 +28,7 @@ const MyReviewsCard = ({ review, handleDeleteReview }) => {
           </div>
           <div>
             <div className="font-bold"> {serviceName} </div>
-            <div className="text-sm opacity-50">United States</div>
+            <div className="text-sm opacity-50">{date ? date : 'not found'}</div>
           </div>
         </div>
       </td>
