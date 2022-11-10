@@ -33,7 +33,6 @@ export const routes = createBrowserRouter([
       {
         path: '/services/:id',
         element: <ServiceDetails></ServiceDetails>,
-        loader: ({ params }) => fetch(`https://legal-network-server.vercel.app/services/${params.id}`)
       },
       {
         path: '/add-service',

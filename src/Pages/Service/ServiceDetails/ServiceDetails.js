@@ -1,14 +1,16 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
-import { Link, useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData, useParams } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 import useTitle from '../../../hooks/useTitle';
 import ReviewCard from './ReviewCard';
 
 const ServiceDetails = () => {
   const { user } = useContext(AuthContext);
-  const { photoURL, name, price, description, _id } = useLoaderData();
+  const { id } = useParams();
+  const [serviceDetails, setServiceDetails] = useState({});
+  const { photoURL, name, price, description, _id } = serviceDetails;
   const [reviews, setReviews] = useState([]);
   const [loading, setLoading] = useState(true);
   useTitle('Service Details');
@@ -39,6 +41,15 @@ const ServiceDetails = () => {
         }
       })
   };
+
+  useEffect(() => {
+    fetch(`https://legal-network-server.vercel.app/services/${id}`)
+      .then(res => res.json())
+      .then(data => {
+        setServiceDetails(data);
+        setLoading(false);
+      })
+  }, [id]);
 
   useEffect(() => {
     fetch(`https://legal-network-server.vercel.app/reviews?serviceId=${_id}`)
