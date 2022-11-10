@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useLoaderData } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import ServiceCard from '../../Service/ServiceCard/ServiceCard';
 import Feature from '../Feature/Feature';
 import Team from '../Team/Team';
