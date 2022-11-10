@@ -18,7 +18,7 @@ const MyReviews = () => {
   }
 
   useEffect(() => {
-    fetch(`http://localhost:5000/my-reviews?email=${myQuery}`, {
+    fetch(`https://legal-network-server.vercel.app/my-reviews?email=${myQuery}`, {
       headers: {
         authorization: `Bearer ${localStorage.getItem('legal-token')}`
       }
@@ -41,7 +41,7 @@ const MyReviews = () => {
       return;
     }
 
-    fetch(`http://localhost:5000/my-reviews/${id}`, {
+    fetch(`https://legal-network-server.vercel.app/my-reviews/${id}`, {
       method: 'DELETE',
       headers: {
         authorization: `Bearer ${localStorage.getItem('legal-token')}`

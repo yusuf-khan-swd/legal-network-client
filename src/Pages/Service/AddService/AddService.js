@@ -13,7 +13,7 @@ const AddService = () => {
   const onSubmit = value => {
     value.date = new Date();
 
-    fetch('http://localhost:5000/services', {
+    fetch('https://legal-network-server.vercel.app/services', {
       method: 'POST',
       headers: {
         'content-type': 'application/json'

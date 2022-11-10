@@ -18,7 +18,7 @@ const EditReview = () => {
 
     value.date = new Date();
 
-    fetch(`http://localhost:5000/my-review/${id}`, {
+    fetch(`https://legal-network-server.vercel.app/my-review/${id}`, {
       method: 'PUT',
       headers: {
         'content-type': 'application/json'
@@ -39,7 +39,7 @@ const EditReview = () => {
   };
 
   useEffect(() => {
-    fetch(`http://localhost:5000/my-review/${id}`)
+    fetch(`https://legal-network-server.vercel.app/my-review/${id}`)
       .then(res => res.json())
       .then(data => {
         setReview(data);

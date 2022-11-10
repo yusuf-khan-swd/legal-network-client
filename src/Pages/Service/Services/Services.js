@@ -12,7 +12,7 @@ const Services = () => {
 
   useEffect(() => {
     setLoading(true);
-    fetch('http://localhost:5000/services')
+    fetch('https://legal-network-server.vercel.app/services')
       .then(res => res.json())
       .then(data => {
         setServices(data);

@@ -21,12 +21,12 @@ export const routes = createBrowserRouter([
       {
         path: '/',
         element: <Home></Home>,
-        loader: () => fetch('http://localhost:5000/popular-services')
+        loader: () => fetch('https://legal-network-server.vercel.app/popular-services')
       },
       {
         path: '/home',
         element: <Home></Home>,
-        loader: () => fetch('http://localhost:5000/popular-services')
+        loader: () => fetch('https://legal-network-server.vercel.app/popular-services')
       },
       {
         path: '/services',
@@ -35,7 +35,7 @@ export const routes = createBrowserRouter([
       {
         path: '/services/:id',
         element: <ServiceDetails></ServiceDetails>,
-        loader: ({ params }) => fetch(`http://localhost:5000/services/${params.id}`)
+        loader: ({ params }) => fetch(`https://legal-network-server.vercel.app/services/${params.id}`)
       },
       {
         path: '/add-service',

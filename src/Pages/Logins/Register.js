@@ -28,7 +28,7 @@ const Register = () => {
         toast.success('Registration is successful!!!');
         reset();
 
-        fetch(`http://localhost:5000/jwt?email=${user.email}`)
+        fetch(`https://legal-network-server.vercel.app/jwt?email=${user.email}`)
           .then(res => res.json())
           .then(data => {
             localStorage.setItem('legal-token', data.token);
@@ -64,7 +64,7 @@ const Register = () => {
         const user = result.user;
         toast.success(`${user.displayName} you are now logged in!!`);
 
-        fetch(`http://localhost:5000/jwt?email=${user.email}`)
+        fetch(`https://legal-network-server.vercel.app/jwt?email=${user.email}`)
           .then(res => res.json())
           .then(data => {
             localStorage.setItem('legal-token', data.token);
@@ -86,7 +86,7 @@ const Register = () => {
         const user = result.user;
         toast.success(`${user.displayName} you are now logged In!!`);
 
-        fetch(`http://localhost:5000/jwt?email=${user.displayName}`)
+        fetch(`https://legal-network-server.vercel.app/jwt?email=${user.displayName}`)
           .then(res => res.json())
           .then(data => {
             localStorage.setItem('legal-token', data.token);
