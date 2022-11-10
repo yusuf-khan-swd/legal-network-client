@@ -21,9 +21,9 @@ const Header = () => {
   };
 
   return (
-    <div>
-      <nav>
-        <div className="navbar bg-base-100 py-5 ">
+    <div className='h-20 pb-2 z-50 sticky top-0'>
+      <nav className='rounded-lg'>
+        <div className="navbar bg-base-100 py-3">
           <div className="navbar-start">
             <div className="dropdown">
               <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -49,15 +49,17 @@ const Header = () => {
                       <Link to='/login'>Login</Link>
                     </>
                 }
-                <li className='border-2 border-orange-400 rounded-lg'>
+                <li className='border-2 border-orange-400 rounded-lg mt-2'>
                   <NavLink className={({ isActive }) => isActive ? 'active' : undefined} to='/blog'>Blog</NavLink>
                 </li>
               </ul>
             </div>
-            <Link to='/' className="text-xl flex justify-center items-center ml-3">
-              <img className='mr-3 w-9 h-9' src={logo} alt="" />
-              <p>Legal Network</p>
-            </Link>
+            <div className='btn btn-ghost'>
+              <Link to='/' className="text-base md:text-xl flex justify-center items-center ml-5">
+                <img className='mr-3 w-9 h-9' src={logo} alt="" />
+                <p>Legal Network</p>
+              </Link>
+            </div>
           </div>
           <div className="navbar-center hidden lg:flex">
             <ul className="menu menu-horizontal p-0">
