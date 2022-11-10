@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 import ServiceCard from '../../Service/ServiceCard/ServiceCard';
 import Feature from '../Feature/Feature';
@@ -10,8 +10,29 @@ import Banner from '../Banner/Banner';
 import { FaArrowDown } from 'react-icons/fa';
 
 const Home = () => {
-  const popularServices = useLoaderData();
+  const [popularServices, setPopularServices] = useState([]);
+  const [loading, setLoading] = useState(true);
   useTitle('Home');
+
+  useEffect(() => {
+    fetch('https://legal-network-server.vercel.app/popular-services')
+      .then(res => res.json())
+      .then(data => {
+        setPopularServices(data);
+        setLoading(false);
+      })
+  }, []);
+
+  if (loading) {
+    return <div className="h-screen flex items-center justify-center space-x-2">
+      <div className="w-4 h-4 rounded-full animate-pulse bg-orange-400"></div>
+      <div className="w-4 h-4 rounded-full animate-pulse bg-orange-400"></div>
+      <div className="w-4 h-4 rounded-full animate-pulse bg-orange-400"></div>
+      <div className="w-4 h-4 rounded-full animate-pulse bg-orange-400"></div>
+      <div className="w-4 h-4 rounded-full animate-pulse bg-orange-400"></div>
+    </div>
+  }
+
 
   return (
     <div className='container mx-auto my-8'>
