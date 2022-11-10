@@ -32,7 +32,11 @@ const Home = () => {
         <Link to='/services' className='btn px-12 bg-white text-gray-600 outline outline-orange-400 border-none hover:bg-zinc-300 hover:border-none'>See More</Link>
       </div>
       <Feature></Feature>
-      <Counter></Counter>
+      <div className='mb-3'>
+        <h2 className='text-xl font-semibold text-center mb-3'>Hot Deal Only Available For</h2>
+        <Counter></Counter>
+      </div>
+      <hr />
       <Team></Team>
     </div>
   );
