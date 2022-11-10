@@ -4,6 +4,7 @@ import { Link, NavLink } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 import { FaUser } from 'react-icons/fa';
 import './Header.css';
+import logo from '../../../assets/logo.ico';
 
 const Header = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -22,7 +23,7 @@ const Header = () => {
   return (
     <div>
       <nav>
-        <div className="navbar bg-base-100">
+        <div className="navbar bg-base-100 py-5 ">
           <div className="navbar-start">
             <div className="dropdown">
               <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -53,7 +54,10 @@ const Header = () => {
                 </li>
               </ul>
             </div>
-            <Link to='/' className="btn btn-ghost normal-case text-xl">Legal Network</Link>
+            <Link to='/' className="text-xl flex justify-center items-center ml-3">
+              <img className='mr-3 w-9 h-9' src={logo} alt="" />
+              <p>Legal Network</p>
+            </Link>
           </div>
           <div className="navbar-center hidden lg:flex">
             <ul className="menu menu-horizontal p-0">
