@@ -10,7 +10,8 @@ import githubLogo from '../../assets/githubLogo.png';
 const Register = () => {
   const { createUser, addUserProfile, googleLogIn, githubLogIn } = useContext(AuthContext);
   const [showPassword, setShowPassword] = useState(false);
-  useTitle('Register')
+  const [loading, setLoading] = useState(false);
+  useTitle('Register');
 
   const { register, handleSubmit, reset, formState: { errors } } = useForm();
 
@@ -28,10 +29,12 @@ const Register = () => {
         toast.success('Registration is successful!!!');
         reset();
 
+        setLoading(true);
         fetch(`https://legal-network-server.vercel.app/jwt?email=${user.email}`)
           .then(res => res.json())
           .then(data => {
             localStorage.setItem('legal-token', data.token);
+            setLoading(false);
           })
           .catch(err => {
             console.log('error: ', err);
@@ -64,10 +67,12 @@ const Register = () => {
         const user = result.user;
         toast.success(`${user.displayName} you are now logged in!!`);
 
+        setLoading(true);
         fetch(`https://legal-network-server.vercel.app/jwt?email=${user.email}`)
           .then(res => res.json())
           .then(data => {
             localStorage.setItem('legal-token', data.token);
+            setLoading(false);
           })
           .catch(err => {
             console.log('error: ', err);
@@ -86,10 +91,12 @@ const Register = () => {
         const user = result.user;
         toast.success(`${user.displayName} you are now logged In!!`);
 
+        setLoading(true);
         fetch(`https://legal-network-server.vercel.app/jwt?email=${user.displayName}`)
           .then(res => res.json())
           .then(data => {
             localStorage.setItem('legal-token', data.token);
+            setLoading(false);
           })
           .catch(err => {
             console.log('error: ', err);
@@ -106,6 +113,16 @@ const Register = () => {
     const isChecked = (event.target.checked);
     setShowPassword(isChecked);
   };
+
+  if (loading) {
+    return <div className="h-screen flex items-center justify-center space-x-2">
+      <div className="w-4 h-4 rounded-full animate-pulse bg-orange-400"></div>
+      <div className="w-4 h-4 rounded-full animate-pulse bg-orange-400"></div>
+      <div className="w-4 h-4 rounded-full animate-pulse bg-orange-400"></div>
+      <div className="w-4 h-4 rounded-full animate-pulse bg-orange-400"></div>
+      <div className="w-4 h-4 rounded-full animate-pulse bg-orange-400"></div>
+    </div>
+  }
 
   return (
     <div>
