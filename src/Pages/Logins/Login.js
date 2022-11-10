@@ -96,7 +96,7 @@ const Login = () => {
 
   return (
     <div>
-      <div className="min-h-screen bg-base-200 pt-8">
+      <div className="min-h-screen bg-orange-50 my-16">
         <div className="card w-full max-w-sm shadow-2xl bg-base-100 mx-auto px-2">
           <form onSubmit={handleSubmit(onSubmit)} className="card-body">
             <h2 className='text-3xl font-bold text-center hover:underline cursor-pointer'>Login</h2>

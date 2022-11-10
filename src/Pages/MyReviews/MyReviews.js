@@ -61,15 +61,15 @@ const MyReviews = () => {
     <div>
       {
         reviews.length === 0 ?
-          <div className='h-screen flex justify-center items-center text-5xl font-bold text-orange-300'>
+          <div className='h-screen bg-orange-50 flex justify-center items-center text-5xl font-bold text-orange-300'>
             You Have 0 Items
           </div>
           :
-          <div className="overflow-x-auto w-full min-h-screen">
+          <div className="overflow-x-auto bg-orange-50 w-full min-h-screen">
             <table className="table w-full">
               <thead>
                 <tr>
-                  <th>
+                  <th >
                   </th>
                   <th>Name</th>
                   <th>Review</th>

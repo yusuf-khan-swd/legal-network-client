@@ -109,7 +109,7 @@ const Register = () => {
 
   return (
     <div>
-      <div className="min-h-screen bg-base-200">
+      <div className="min-h-screen bg-orange-50 my-16">
         <div className="hero-content">
           <div className="card flex-shrink-0 w-full max-w-screen-sm shadow-2xl bg-base-100">
             <form onSubmit={handleSubmit(onSubmit)} className="card-body">
