@@ -1,8 +1,30 @@
-# Getting Started with Create React App
+# Welcome to Legal Network
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Website Live Link [Legal Network](https://legal-network-a9c8a.web.app/).
 
-## Available Scripts
+## Feature & Functionality
+
+- Project have dynamic title using <code>custom hook</code> useTitle.
+- This project have private route to block un Authenticate user.
+- <code>JWT</code> to verify a user is authorize to access this route.
+- Anyone can view services in home page and in services route.
+- After user verify the user can login.
+- After login he or she can add a service and also add review.
+- After login user can check his or her review and delete or modified the review.
+
+## Technology Used In This Project
+
+- This project create with <code>REACT</code> Library.
+- <code>react-router-dom</code> package for routing.
+- <code>firebase</code> Package used for authentication and hosting the site.
+- <code>mongoDB</code> for as db to store data and <code>Express</code> as node server.
+- <code>react-photo-view</code> package used to show image in a interesting way.
+- <code>react-hook-form</code> package used to get handle form value.
+- <code>react-hot-toast</code> used for show successful or error message to user.
+- <code>react-icons</code> used for icons.
+- <code>tailwind</code> used as a css framework for handling the style.
+- <code>daisyUI</code> as tailwind component library.
+-
 
 In the project directory, you can run:
 
