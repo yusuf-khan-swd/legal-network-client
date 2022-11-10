@@ -28,7 +28,7 @@ const Home = () => {
           }
         </PhotoProvider>
       </div>
-      <div className='text-center my-10'>
+      <div className='text-center mb-12 mt-8'>
         <Link to='/services' className='btn px-12 bg-white text-gray-600 outline outline-orange-400 border-none hover:bg-zinc-300 hover:border-none'>See More</Link>
       </div>
       <hr className='w-11/12 mx-auto' />
