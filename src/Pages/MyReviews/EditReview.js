@@ -2,11 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { useParams } from 'react-router-dom';
+import useTitle from '../../hooks/useTitle';
 
 const EditReview = () => {
   const { id } = useParams();
   const [review, setReview] = useState({});
   const { title, description } = review;
+  useTitle('Update Review');
 
   const { register, handleSubmit, reset } = useForm();
 
