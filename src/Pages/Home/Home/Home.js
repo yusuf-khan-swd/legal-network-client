@@ -28,16 +28,19 @@ const Home = () => {
           }
         </PhotoProvider>
       </div>
-      <div className='text-center mt-10'>
+      <div className='text-center my-10'>
         <Link to='/services' className='btn px-12 bg-white text-gray-600 outline outline-orange-400 border-none hover:bg-zinc-300 hover:border-none'>See More</Link>
       </div>
+      <hr className='w-11/12 mx-auto' />
       <Feature></Feature>
-      <div className='mb-3'>
+      <hr className='w-11/12 mx-auto' />
+      <div className='my-12'>
         <h2 className='text-xl font-semibold text-center mb-3'>Hot Deal Only Available For</h2>
         <Counter></Counter>
       </div>
-      <hr />
+      <hr className='w-11/12 mx-auto' />
       <Team></Team>
+      <hr className='w-11/12 mx-auto' />
     </div>
   );
 };
