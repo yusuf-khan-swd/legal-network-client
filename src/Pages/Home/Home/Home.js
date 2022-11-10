@@ -17,8 +17,8 @@ const Home = () => {
   return (
     <div className='container mx-auto my-8'>
       <Banner></Banner>
-      <div>
-        <h2 className='text-2xl underline underline-offset-8 font-bold text-orange-400 text-center mb-3'>The Popular Services That We Provide</h2>
+      <div className='mb-5'>
+        <h1 className='text-3xl underline underline-offset-8 font-bold text-orange-400 text-center mb-2'>The Popular Services That Are Now Trending</h1>
         <p> <FaArrowDown className='text-3xl text-orange-400 mx-auto'></FaArrowDown> </p>
       </div>
       <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
