@@ -8,6 +8,7 @@ const EditReview = () => {
   const { id } = useParams();
   const [review, setReview] = useState({});
   const { title, description } = review;
+  const [loading, setLoading] = useState(false);
   useTitle('Update Review');
 
   const { register, handleSubmit, reset } = useForm();
@@ -32,6 +33,7 @@ const EditReview = () => {
         if (data.modifiedCount > 0) {
           toast.success('Update was successful.');
           setReview(value);
+          setLoading(false)
         }
       })
   };
@@ -45,8 +47,19 @@ const EditReview = () => {
       .then(res => res.json())
       .then(data => {
         setReview(data);
+        setLoading(false)
       })
   }, [id]);
+
+  if (loading) {
+    return <div className="h-screen flex items-center justify-center space-x-2">
+      <div className="w-4 h-4 rounded-full animate-pulse bg-orange-400"></div>
+      <div className="w-4 h-4 rounded-full animate-pulse bg-orange-400"></div>
+      <div className="w-4 h-4 rounded-full animate-pulse bg-orange-400"></div>
+      <div className="w-4 h-4 rounded-full animate-pulse bg-orange-400"></div>
+      <div className="w-4 h-4 rounded-full animate-pulse bg-orange-400"></div>
+    </div>
+  }
 
   return (
     <div className='my-8 bg-orange-50'>
