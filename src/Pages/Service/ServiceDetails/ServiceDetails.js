@@ -10,6 +10,7 @@ const ServiceDetails = () => {
   const { user } = useContext(AuthContext);
   const { photoURL, name, price, description, _id } = useLoaderData();
   const [reviews, setReviews] = useState([]);
+  const [loading, setLoading] = useState(true);
   useTitle('Service Details');
 
   const { register, handleSubmit, reset, formState: { errors } } = useForm();
@@ -44,8 +45,19 @@ const ServiceDetails = () => {
       .then(res => res.json())
       .then(data => {
         setReviews(data);
+        setLoading(false);
       })
   }, [_id]);
+
+  if (loading) {
+    return <div className="h-screen flex items-center justify-center space-x-2">
+      <div className="w-4 h-4 rounded-full animate-pulse bg-orange-400"></div>
+      <div className="w-4 h-4 rounded-full animate-pulse bg-orange-400"></div>
+      <div className="w-4 h-4 rounded-full animate-pulse bg-orange-400"></div>
+      <div className="w-4 h-4 rounded-full animate-pulse bg-orange-400"></div>
+      <div className="w-4 h-4 rounded-full animate-pulse bg-orange-400"></div>
+    </div>
+  }
 
   return (
     <div>
