@@ -20,6 +20,34 @@ const Header = () => {
       })
   };
 
+  const menuItems = <>
+    <li>
+      <NavLink className={({ isActive }) => isActive ? 'active' : undefined} to='/home'>Home</NavLink>
+      <NavLink className={({ isActive }) => isActive ? 'active' : undefined} to='/Services'>Services</NavLink>
+    </li>
+    {
+      user?.uid ?
+        <>
+          <li>
+            <NavLink className={({ isActive }) => isActive ? 'active' : undefined} to='/my-reviews'>My Reviews</NavLink>
+          </li>
+          <li>
+            <NavLink className={({ isActive }) => isActive ? 'active' : undefined} to='/add-service'>Add Service</NavLink>
+          </li>
+          <li><button onClick={handleLogOut}>Logout</button></li>
+        </>
+        :
+        <>
+          <li>
+            <Link to='/login'>Login</Link>
+          </li>
+        </>
+    }
+    <li>
+      <NavLink className={({ isActive }) => isActive ? 'active' : undefined} to='/blog'>Blog</NavLink>
+    </li>
+  </>
+
   return (
     <div className='h-20 pb-2 z-50 sticky top-0'>
       <nav className='rounded-lg'>
@@ -30,28 +58,9 @@ const Header = () => {
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
               </label>
               <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
-                <li>
-                  <NavLink className={({ isActive }) => isActive ? 'active' : undefined} to='/home'>Home</NavLink>
-                </li>
                 {
-                  user?.uid ?
-                    <>
-                      <li>
-                        <NavLink className={({ isActive }) => isActive ? 'active' : undefined} to='/my-reviews'>My Reviews</NavLink>
-                      </li>
-                      <li>
-                        <NavLink className={({ isActive }) => isActive ? 'active' : undefined} to='/add-service'>Add Service</NavLink>
-                      </li>
-                      <li><button onClick={handleLogOut}>Logout</button></li>
-                    </>
-                    :
-                    <>
-                      <Link to='/login'>Login</Link>
-                    </>
+                  menuItems
                 }
-                <li className='border-2 border-orange-400 rounded-lg mt-2'>
-                  <NavLink className={({ isActive }) => isActive ? 'active' : undefined} to='/blog'>Blog</NavLink>
-                </li>
               </ul>
             </div>
             <div className='btn btn-ghost'>
@@ -63,34 +72,10 @@ const Header = () => {
           </div>
           <div className="navbar-center hidden lg:flex">
             <ul className="menu menu-horizontal p-0">
-              <li>
-                <NavLink className={({ isActive }) => isActive ? 'active' : undefined} to='/home'>Home</NavLink>
-              </li>
-              {
-                user?.uid ?
-                  <>
-                    <li>
-                      <NavLink className={({ isActive }) => isActive ? 'active' : undefined} to='/my-reviews'>My Reviews</NavLink>
-                    </li>
-                    <li>
-                      <NavLink className={({ isActive }) => isActive ? 'active' : undefined} to='/add-service'>Add Service</NavLink>
-                    </li>
-                    <li><button onClick={handleLogOut}>Logout</button></li>
-                  </>
-                  :
-                  <>
-                    <li>
-                      <Link to='/login'>Login</Link>
-                    </li>
-                  </>
-              }
-              <li>
-                <NavLink className={({ isActive }) => isActive ? 'active' : undefined} to='/blog'>Blog</NavLink>
-              </li>
+              {menuItems}
             </ul>
           </div>
           <div className="navbar-end">
-
             <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
               <div className="w-10 rounded-full">
                 {

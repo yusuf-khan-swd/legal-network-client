@@ -36,16 +36,16 @@ const Banner = () => {
             <Link to='/services'>
               <button
                 type="button"
-                className="btn mr-2"
+                className="btn mr-2 rounded-2xl border-none text-black bg-orange-300"
               >
-                Explore More
+                Our Services
               </button></Link>
             <Link
               to="/blog"
               aria-label=""
               className="inline-flex items-center font-semibold transition-colors duration-200 text-deep-purple-accent-400 hover:text-deep-purple-800"
             >
-              Learn More
+              Read Blog
               <svg
                 className="inline-block w-3 ml-2"
                 fill="currentColor"
